@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,33 +6,42 @@
 h1 {
     font-family: 'Raleway', 'sans-serif';
     font-size: 36px;
+    font-weight: 400;
 }
 
 
 h2 {
     font-family: 'Raleway', 'sans-serif';
     font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
 }
 
 
 h3 {
     font-family: 'Raleway', 'sans-serif';
     font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
 }
 
 h4 {
     font-family: 'Raleway', 'sans-serif';
     font-size: 14px;
     font-style: italic;
+    font-weight: 400;
 }
 
 small {
     font-family: 'Raleway', 'sans-serif';
     font-size: 12px;
+    font-style: normal;
 }
 
 p {
     font-family: 'Raleway', 'sans-serif';
     font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
 }
 
