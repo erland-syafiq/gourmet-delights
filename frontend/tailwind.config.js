@@ -6,11 +6,15 @@ export default {
   ],
   theme: {
     extend: {
-      primary: "#FAF0CA",
-      secondary: "#EE964B",
-      tertiary: "0D3B66",
-      accent: "F95738",
-      
+      colors: {
+        primary: "#FAF0CA",
+        secondary: "#EE964B",
+        tertiary: "#0D3B66",
+        accent: "F95738",
+      },
+      backgroundImage: {
+        home: 'url(/img/home.jpg)'
+      }
     },
   },
   plugins: [],

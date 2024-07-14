@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 36px;
+}
+
+
+h2 {
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 20px;
+}
+
+
+h3 {
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 16px;
+}
+
+h4 {
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 14px;
+    font-style: italic;
+}
+
+small {
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 12px;
+}
+
+p {
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 16px;
+}
+
