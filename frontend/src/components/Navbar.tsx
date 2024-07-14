@@ -11,8 +11,8 @@ const Navbar: React.FC = () => {
     }
 
     return (
-        <header>
-            <nav className="bg-accent-1 flex justify-between px-20 py-5">
+        <header className="bg-accent-1 px-20 py-3 border-black border-b">
+            <nav className="flex justify-between">
                 <Link to="/"><h2>Gourmet Delights</h2></Link>
                 <Link to="/"><h2>Search</h2></Link>
             </nav>

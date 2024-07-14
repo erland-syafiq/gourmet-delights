@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const HomePage: React.FC = () => {
     return (
-      <div className="min-h-screen flex flex-col bg-home bg-cover bg-no-repeat bg-bottom-left">
+      <div className="min-h-screen flex flex-col bg-home bg-cover bg-no-repeat bg-left-bottom">
         <header className="bg-transparent flex justify-start items-center p-6">
           <h2 className="text-gray-900">Gourmet Delights</h2>
           <nav className="ms-20">
