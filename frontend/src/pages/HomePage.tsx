@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+
 const HomePage: React.FC = () => {
     return (
       <div className="min-h-screen flex flex-col bg-home bg-cover bg-no-repeat bg-bottom-left">
         <header className="bg-transparent flex justify-start items-center p-6">
           <h2 className="text-gray-900">Gourmet Delights</h2>
           <nav className="ms-20">
-          <a href="#" className="text-gray-900 hover:text-gray-700">Search</a>
+          <Link to="/search" className="text-gray-900 hover:text-gray-700">Search</Link>
           </nav>
         </header>
         <main className="ps-20 flex flex-1 flex-col justify-center max-w-lg">
