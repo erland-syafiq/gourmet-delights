@@ -8,12 +8,14 @@
 Fetches a recipe with the id of `<id>`. 
 
 #### Response
+##### Possible Responses
 | Status Code             | Description                             |
 |-------------------------|-----------------------------------------|
 | 200 OK                  | Returns a JSON of a `recipe`            |
-| 500 Internal Server Error | Server error                          |
+| 404 Not Found           | Recipe not found                        |
+| 500 Server Error        | Internal Server Errror.                 |
 
-
+##### Recipe Fields
 | Recipe Fields            | Type   | Description                          |
 |--------------------------|--------|--------------------------------------|
 | recipeId                 | string | Unique id of recipe                  |
@@ -60,16 +62,32 @@ Content-Type: application/json
 
 ### GET `/recipes/search`
 
-#### **Query Parameters:**
+#### Query Parameters
 - `ingredients` (optional): Search by an ingredient.   
   Example: `/recipes/search?ingredients=chicken`
 
-#### **Example Request:**
+#### Example Request
 `GET /recipes/search?ingredients=cheese`
 
-#### **Response:**
-- **Status Code**: 200 OK  
-- **Content-Type**: `application/json`  
+#### Response
+##### Possible Responses
+| Status Code             | Description                             |
+|-------------------------|-----------------------------------------|
+| 200 OK                  | Returns a JSON list of `recipe`         |
+| 404 Not Found           | Recipe not found                        |
+| 500 Server Error        | Internal Server Errror.                 |
 
-#### **Error Handling:**
-- **Status Code**: 404 Not Found (if no recipes match the search criteria)
+##### Recipe Fields
+| Recipe Fields            | Type   | Description                          |
+|--------------------------|--------|--------------------------------------|
+| recipeId                 | string | Unique id of recipe                  |
+| title                    | string | Recipe Title                         |
+| authorFName              | string | First name of author                 |
+| authorLName              | string | Last name of author                  |
+| readingTime              | int    | Time it takes to read recipe in minutes        |
+| summary                  | string | Summary of recipe                    |
+| datePublished            | string | Date published (YYYY-MM-DD)          |
+| rating                   | int    | Rating of the recipe, out of 5       |
+| ingredients              | list of strings | List of ingredients         |
+
+Note: The result of this search query will not include the recipe's content to save space.
