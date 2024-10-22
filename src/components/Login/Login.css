@@ -1,14 +1,20 @@
 .login-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 1em;
-  font-weight: bold;
-  text-decoration: none;
-  color: black;
-  background-color: rgba(255, 239, 205, 0.8);
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  }
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    background-color: rgba(255, 239, 205, 0.8);
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer
+}
+.login-button:hover {
+    background-color: #d4a373;
+    color: white;
+}
+  
   
