@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0          
+    container_name: gourmetdelights-db
+    environment:
+      MYSQL_ROOT_PASSWORD: admin-password
+      MYSQL_DATABASE: gourmetdelights
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+    ports:
+      - "3305:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - gourmetdelights-network
+  
+  api:
+    build: ./api
+    container_name: gourmetdelights-api
+    ports: 
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/gourmetdelights
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: password 
+    depends_on:
+      - mysql
+    networks:
+      - gourmetdelights-network
+    restart: on-failure
+
+volumes:
+  mysql-data:
+
+networks:
+  gourmetdelights-network:
+    driver: bridge
