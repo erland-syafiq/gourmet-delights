@@ -1,21 +1,21 @@
 import React from 'react';
-import './App.css';
-import Login from './components/Login/Login';
-import SearchBar from './components/SearchBar/SearchBar';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import SearchPage from './pages/SearchPage';
 
-function App() {
-  return (
-    <div className="App">
-      <div className="top-bar">
-        <h1>Gourmet Delights</h1>
-        <Login /> {/* login */}
-      </div>
-      <div className="content">
-        <p className="intro-text">Find recipes from the ingredients you already have. Save money and be more sustainable! From quick weeknight dinners to elaborate holiday feasts, we have something for everyone. Browse through our recipes:</p>
-        <SearchBar /> {/* search bar */}
-      </div>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <nav>
+                <Link to="/">Home</Link> | <Link to="/search">Search</Link>
+            </nav>
+
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/search" element={<SearchPage />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
