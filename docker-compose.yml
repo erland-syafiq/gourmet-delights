@@ -30,6 +30,17 @@ services:
     networks:
       - gourmetdelights-network
     restart: on-failure
+  
+  app:
+    build: ./app
+    container_name: gourmetdelights-app
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    networks:
+      - gourmetdelights-network
+      
 
 volumes:
   mysql-data:

@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.css';
-import Login from './components/Login/Login';
-import SearchBar from './components/SearchBar/SearchBar';
+import './HomePage.css';
+import Login from '../components/Login/Login';
+import SearchBar from '../components/SearchBar/SearchBar';
 
-function App() {
+function HomePage() {
   return (
     <div className="App">
       <div className="top-bar">
@@ -18,4 +18,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomePage;

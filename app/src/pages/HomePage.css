@@ -9,7 +9,7 @@
   padding: 20px;
   min-height: 100vh; /* set min height */
   width: 100vw; /* set width */
-  background-image: url('1.jpg'); /* picture  */
+  background-image: url('./1.jpg'); /* picture  */
   background-size: cover; /* cover */
   background-position: center center; /* middle */
   background-repeat: no-repeat; /* no repeat picture */
