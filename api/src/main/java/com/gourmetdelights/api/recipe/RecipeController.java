@@ -1,6 +1,7 @@
 package com.gourmetdelights.api.recipe;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public class RecipeController {
 	}
 	
 	@GetMapping("/recipes/{id}")
-	public Recipe getRecipe(@PathVariable String id) {
+	public Recipe getRecipe(@PathVariable UUID id) {
 		return recipeService.getRecipe(id);
 	}
 	

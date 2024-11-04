@@ -2,6 +2,7 @@ package com.gourmetdelights.api.recipe;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +21,13 @@ public class RecipeService {
 		return recipeRepository.findAll();
 	}
 	
-	public Recipe getRecipe(String id) {
+	public Recipe getRecipe(UUID id) {
 		Optional<Recipe> recipe = recipeRepository.findById(id);
 		
 		return recipe.get();
 	}
 	
-	public boolean doesRecipeExist(String id) {
+	public boolean doesRecipeExist(UUID id) {
 		Optional<Recipe> recipe = recipeRepository.findById(id);
 		
 		return recipe.isPresent();
