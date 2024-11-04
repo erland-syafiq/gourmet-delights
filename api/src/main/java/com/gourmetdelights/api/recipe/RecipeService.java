@@ -32,5 +32,19 @@ public class RecipeService {
 		
 		return recipe.isPresent();
 	}
+
+	public FullRecipeDTO convertToFullRecipeDTO(Recipe recipe) {
+		FullRecipeDTO fullRecipe = new FullRecipeDTO();
+		fullRecipe.setRecipeID(recipe.getRecipeId());
+        fullRecipe.setTitle(recipe.getTitle());
+        fullRecipe.setAuthorFName(recipe.getAuthor().getFirstName());
+        fullRecipe.setAuthorLName(recipe.getAuthor().getLastName());
+        fullRecipe.setReadingTime(recipe.getReadingTime());
+        fullRecipe.setSummary(recipe.getSummary());
+        fullRecipe.setContent(recipe.getContent());
+        fullRecipe.setDatePublished(recipe.getDatePublished());
+        fullRecipe.setRating(3);
+		return fullRecipe;
+	}
 	
 }

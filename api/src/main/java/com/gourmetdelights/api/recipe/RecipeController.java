@@ -27,8 +27,9 @@ public class RecipeController {
 	}
 	
 	@GetMapping("/recipes/{id}")
-	public Recipe getRecipe(@PathVariable UUID id) {
-		return recipeService.getRecipe(id);
+	public FullRecipeDTO getRecipe(@PathVariable UUID id) {
+		Recipe recipe = recipeService.getRecipe(id);
+		return recipeService.convertToFullRecipeDTO(recipe);
 	}
 	
 	

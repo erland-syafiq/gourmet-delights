@@ -1,13 +1,19 @@
 package com.gourmetdelights.api.user;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
+import com.gourmetdelights.api.recipe.Recipe;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,4 +45,7 @@ public class User {
 
     @Column(name="date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Recipe> recipes;
 }
