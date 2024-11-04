@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface RecipeRepository extends JpaRepository<Recipe, UUID> {
 
-    // Custom query to find recipes containing at least one of the provided ingredients
-    @Query("SELECT DISTINCT r FROM Recipe r JOIN r.ingredients i WHERE i IN :ingredients")
-    List<Recipe> findRecipesByIngredients(@Param("ingredients") List<String> ingredients);
+    // Custom query to find recipes containing at least one of the provided ingredients (case-insensitive and partial match)
+    @Query("SELECT DISTINCT r FROM Recipe r JOIN r.ingredients i WHERE LOWER(i) LIKE LOWER(CONCAT('%', :ingredient, '%'))")
+    List<Recipe> findRecipesByIngredient(@Param("ingredient") String ingredient);
 }

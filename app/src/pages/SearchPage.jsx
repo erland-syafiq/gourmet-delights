@@ -11,7 +11,10 @@ const SearchPage = () => {
         setLoading(true);
         setError("");
         try {
-            const formattedIngredients = ingredients.split(',').map(item => item.trim());
+            // Splitting, trimming, and converting the ingredients to lowercase to standardize them
+            const formattedIngredients = ingredients.split(',')
+                                                    .map(item => item.trim().toLowerCase());
+    
             console.log('Searching with ingredients:', formattedIngredients);
             
             const response = await fetch('http://localhost:8080/recipes/by-ingredients', {
@@ -39,6 +42,7 @@ const SearchPage = () => {
             setLoading(false);
         }
     };
+    
     
 
     return (
