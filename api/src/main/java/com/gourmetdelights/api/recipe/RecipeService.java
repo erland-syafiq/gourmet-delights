@@ -47,4 +47,16 @@ public class RecipeService {
 		return fullRecipe;
 	}
 	
+    public Recipe getRecipe(UUID id) {
+        Optional<Recipe> recipe = recipeRepository.findById(id);
+        return recipe.orElse(null); // Using orElse to prevent throwing an exception if the recipe is not found
+    }
+
+    public boolean doesRecipeExist(UUID id) {
+        return recipeRepository.existsById(id);
+    }
+
+    public List<Recipe> getRecipesByIngredients(List<String> ingredients) {
+        return recipeRepository.findRecipesByAllIngredients(ingredients);
+    }
 }
