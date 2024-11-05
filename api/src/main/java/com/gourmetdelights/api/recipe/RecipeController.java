@@ -16,33 +16,25 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost")
 @RestController
 public class RecipeController {
-    
-    @Autowired
-    private RecipeService recipeService;
 
-    @PostMapping("/recipes")
-    public ResponseEntity<Recipe> putRecipe(@RequestBody Recipe recipe) {
-        try {
-            Recipe savedRecipe = recipeService.putRecipe(recipe);
-            return ResponseEntity.ok(savedRecipe);
-        } catch (Exception e) {
-            // Log the error for debugging
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-
-    @GetMapping("/recipes")
-    public List<Recipe> getAllRecipes() {
-        return recipeService.getAllRecipes();
-    }
-
-    @GetMapping("/recipes/{id}")
-    public Recipe getRecipe(@PathVariable UUID id) {
-        return recipeService.getRecipe(id);
-    }
-
+	@Autowired
+	private RecipeService recipeService;
+	
+	@PostMapping("/recipes")
+	public Recipe putRecipe(@RequestBody Recipe recipe) {
+		return recipeService.putRecipe(recipe);
+	}
+	
+	@GetMapping("/recipes")
+	public List<Recipe> getAllRecipes() {
+		return recipeService.getAllRecipes();
+	}
+	
+	@GetMapping("/recipes/{id}")
+	public FullRecipeDTO getRecipe(@PathVariable UUID id) {
+		Recipe recipe = recipeService.getRecipe(id);
+		return recipeService.convertToFullRecipeDTO(recipe);
+  }
     // Search endpoint
 	@PostMapping("/recipes/by-ingredients")
 	public List<Recipe> searchRecipes(@RequestBody List<String> ingredients) {
