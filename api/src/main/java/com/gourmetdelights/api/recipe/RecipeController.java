@@ -19,20 +19,18 @@ public class RecipeController {
     
     @Autowired
     private RecipeService recipeService;
-    
-    // Existing CRUD operations
 
     @PostMapping("/recipes")
-public ResponseEntity<Recipe> putRecipe(@RequestBody Recipe recipe) {
-    try {
-        Recipe savedRecipe = recipeService.putRecipe(recipe);
-        return ResponseEntity.ok(savedRecipe);
-    } catch (Exception e) {
-        // Log the error for debugging
-        e.printStackTrace();
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    public ResponseEntity<Recipe> putRecipe(@RequestBody Recipe recipe) {
+        try {
+            Recipe savedRecipe = recipeService.putRecipe(recipe);
+            return ResponseEntity.ok(savedRecipe);
+        } catch (Exception e) {
+            // Log the error for debugging
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
-}
 
 
     @GetMapping("/recipes")
@@ -48,8 +46,6 @@ public ResponseEntity<Recipe> putRecipe(@RequestBody Recipe recipe) {
     // Search endpoint
 	@PostMapping("/recipes/by-ingredients")
 	public List<Recipe> searchRecipes(@RequestBody List<String> ingredients) {
-		System.out.println("Received ingredients: " + ingredients);
 		return recipeService.getRecipesByIngredients(ingredients);
 	}
-
 }

@@ -4,14 +4,16 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import jakarta.persistence.CollectionTable;
+import com.gourmetdelights.api.ingredient.Ingredient;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,10 +44,7 @@ public class Recipe {
 
     @Column(name = "content")
     private String content;
-
-    // Updated Ingredients Field
-    @ElementCollection
-    @CollectionTable(name = "recipe_ingredients", joinColumns = @JoinColumn(name = "recipe_id"))
-    @Column(name = "ingredient")
-    private List<String> ingredients;
+    
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Ingredient> ingredients;
 }
