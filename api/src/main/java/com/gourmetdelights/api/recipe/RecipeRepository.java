@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 
-@Repository
 public interface RecipeRepository extends JpaRepository<Recipe, UUID> {
 
     @Query(

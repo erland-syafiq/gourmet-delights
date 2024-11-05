@@ -3,6 +3,7 @@ package com.gourmetdelights.api.recipe;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,17 +45,13 @@ public class RecipeService {
         fullRecipe.setContent(recipe.getContent());
         fullRecipe.setDatePublished(recipe.getDatePublished());
         fullRecipe.setRating(3);
+        fullRecipe.setIngredients(
+            recipe.getIngredients()
+                .stream()
+                .map((ingredient) -> ingredient.getIngredient())
+                .collect(Collectors.toList()));
 		return fullRecipe;
 	}
-	
-    public Recipe getRecipe(UUID id) {
-        Optional<Recipe> recipe = recipeRepository.findById(id);
-        return recipe.orElse(null); // Using orElse to prevent throwing an exception if the recipe is not found
-    }
-
-    public boolean doesRecipeExist(UUID id) {
-        return recipeRepository.existsById(id);
-    }
 
     public List<Recipe> getRecipesByIngredients(List<String> ingredients) {
         return recipeRepository.findRecipesByAllIngredients(ingredients);

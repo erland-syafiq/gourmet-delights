@@ -1,6 +1,7 @@
 package com.gourmetdelights.api.recipe;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import lombok.Data;
@@ -18,5 +19,5 @@ public class FullRecipeDTO {
     private String content;
     private LocalDate datePublished;
     private int rating;
-    //private List<Ingredient> ingredients;
+    private List<String> ingredients;
 }
