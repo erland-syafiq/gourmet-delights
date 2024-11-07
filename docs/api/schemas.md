@@ -19,13 +19,10 @@ Fetches schemas with their respective primary key id.
 | Recipe Fields            | Type   | Description                          |
 |--------------------------|--------|--------------------------------------|
 | recipeId                 | string | Unique id of recipe                  |
-| title                    | string | Recipe Title                         |
-| authorFName              | string | First name of author                 |
-| authorLName              | string | Last name of author                  |
+| content                  | string | The details of the recipe            |
+| datePublished            | date   | Date published (YYYY-MM-DD)    |
 | readingTime              | int    | Time it takes to read recipe in minutes        |
 | summary                  | string | Summary of recipe                    |
-| content                  | string | Content of the recipe                |
-| datePublished            | string | Date published (YYYY-MM-DD)          |
 | rating                   | int    | Rating of the recipe, out of 5       |
 | ingredients              | list of strings | List of ingredients         |
 
