@@ -2,7 +2,7 @@
 
 ## Schemas
 
-### GET [Text]
+### GET `/recipes/<id>`
 
 #### Description
 Fetches schemas with their respective primary key id.
@@ -92,7 +92,7 @@ Note: The result of this search query will not include the recipe's content to s
 
 ## Schemas
 
-### GET [Text]
+### GET `/users/<id>`
 
 #### Description
 Fetches schemas with their respective primary key id.
@@ -120,7 +120,7 @@ Fetches schemas with their respective primary key id.
 
 ## Schemas
 
-### GET [Text]
+### GET `/recipe_ingredients/<id>`
 
 #### Description
 Fetches schemas with their respective primary key id.
@@ -144,7 +144,7 @@ Fetches schemas with their respective primary key id.
 
 ## Schemas
 
-### GET [Text]
+### GET `/ratings/<id>`
 
 #### Description
 Fetches schemas with their respective primary key id.
