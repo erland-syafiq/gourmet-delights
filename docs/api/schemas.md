@@ -107,7 +107,7 @@ Fetches schemas with their respective primary key id.
 
 ##### User Fields
 | User Fields            | Type   | Description                          |
-|--------------------------|--------|--------------------------------------|
+|------------------------|--------|--------------------------------------|
 | userId                 | string | Unique id of user                  |
 | dateOfBirth            | date   | Date of birth (YYYY-MM-DD)    |
 | firstName              | string    | First name of the user        |
@@ -129,12 +129,38 @@ Fetches schemas with their respective primary key id.
 ##### Possible Responses
 | Status Code             | Description                             |
 |-------------------------|-----------------------------------------|
-| 200 OK                  | Returns a JSON of a `user`            |
+| 200 OK                  | Returns a JSON of a `recipe_ingredient`            |
 | 404 Not Found           | Recipe not found                        |
 | 500 Server Error        | Internal Server Errror.                 |
 
 ##### User Fields
 | User Fields            | Type   | Description                          |
-|--------------------------|--------|--------------------------------------|
-| ingredient                 | string | Name of the ingredient                  |
-| recipeId              | string    | Unique id of the recipe that this ingredient is part of       |
+|------------------------|--------|--------------------------------------|
+| ingredient             | string | Name of the ingredient                  |
+| recipeId               | string    | Unique id of the recipe that this ingredient is part of       |
+
+
+# Ratings
+
+## Schemas
+
+### GET [Text]
+
+#### Description
+Fetches schemas with their respective primary key id.
+
+#### Response
+##### Possible Responses
+| Status Code             | Description                             |
+|-------------------------|-----------------------------------------|
+| 200 OK                  | Returns a JSON of a `rating`            |
+| 404 Not Found           | Recipe not found                        |
+| 500 Server Error        | Internal Server Errror.                 |
+
+##### User Fields
+| User Fields            | Type   | Description                          |
+|------------------------|--------|--------------------------------------|
+| userId                 | string | Unique id of the user who gave the rating                  |
+| recipeId               | string    | Unique id of the recipe that this rating is for       |
+| score                  | int    | The score given by the user, out of 5        |
+| timeStamp              | Timestamp    | The time that this rating was given        |
