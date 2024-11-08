@@ -114,3 +114,27 @@ Fetches schemas with their respective primary key id.
 | lastName               | string | Last name of the user                    |
 | password               | string | User's password       |
 | username               | string | User's username         |
+
+
+# Recipe Ingredients
+
+## Schemas
+
+### GET [Text]
+
+#### Description
+Fetches schemas with their respective primary key id.
+
+#### Response
+##### Possible Responses
+| Status Code             | Description                             |
+|-------------------------|-----------------------------------------|
+| 200 OK                  | Returns a JSON of a `user`            |
+| 404 Not Found           | Recipe not found                        |
+| 500 Server Error        | Internal Server Errror.                 |
+
+##### User Fields
+| User Fields            | Type   | Description                          |
+|--------------------------|--------|--------------------------------------|
+| ingredient                 | string | Name of the ingredient                  |
+| recipeId              | string    | Unique id of the recipe that this ingredient is part of       |
