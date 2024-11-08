@@ -78,13 +78,39 @@ Content-Type: application/json
 | Recipe Fields            | Type   | Description                          |
 |--------------------------|--------|--------------------------------------|
 | recipeId                 | string | Unique id of recipe                  |
-| title                    | string | Recipe Title                         |
-| authorFName              | string | First name of author                 |
-| authorLName              | string | Last name of author                  |
+| content                  | string | The details of the recipe            |
+| datePublished            | date   | Date published (YYYY-MM-DD)    |
 | readingTime              | int    | Time it takes to read recipe in minutes        |
 | summary                  | string | Summary of recipe                    |
-| datePublished            | string | Date published (YYYY-MM-DD)          |
-| rating                   | int    | Rating of the recipe, out of 5       |
-| ingredients              | list of strings | List of ingredients         |
+| title                    | string | Title of the recipe       |
+| authorId                 | string | Id of the author of the recipe         |
 
 Note: The result of this search query will not include the recipe's content to save space.
+
+
+# Users
+
+## Schemas
+
+### GET [Text]
+
+#### Description
+Fetches schemas with their respective primary key id.
+
+#### Response
+##### Possible Responses
+| Status Code             | Description                             |
+|-------------------------|-----------------------------------------|
+| 200 OK                  | Returns a JSON of a `user`            |
+| 404 Not Found           | Recipe not found                        |
+| 500 Server Error        | Internal Server Errror.                 |
+
+##### User Fields
+| User Fields            | Type   | Description                          |
+|--------------------------|--------|--------------------------------------|
+| userId                 | string | Unique id of user                  |
+| dateOfBirth            | date   | Date of birth (YYYY-MM-DD)    |
+| firstName              | string    | First name of the user        |
+| lastName               | string | Last name of the user                    |
+| password               | string | User's password       |
+| username               | string | User's username         |
