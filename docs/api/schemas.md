@@ -23,8 +23,8 @@ Fetches schemas with their respective primary key id.
 | datePublished            | date   | Date published (YYYY-MM-DD)    |
 | readingTime              | int    | Time it takes to read recipe in minutes        |
 | summary                  | string | Summary of recipe                    |
-| rating                   | int    | Rating of the recipe, out of 5       |
-| ingredients              | list of strings | List of ingredients         |
+| title                    | string | Title of the recipe       |
+| authorId                 | string | Id of the author of the recipe         |
 
 #### Example Request
 ```
