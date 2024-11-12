@@ -45,7 +45,7 @@ public class Recipe {
     @Column(name = "summary")
     private String summary;
 
-    @Column(name = "content")
+    @Column(name = "content", length = 4096)
     private String content;
 
     @ManyToOne(fetch = FetchType.EAGER)
