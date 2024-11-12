@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  mysql:
+  db:
     image: mysql:8.0          
     container_name: gourmetdelights-db
     environment:
@@ -22,11 +22,11 @@ services:
     ports: 
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/gourmetdelights
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gourmetdelights
       SPRING_DATASOURCE_USERNAME: admin
       SPRING_DATASOURCE_PASSWORD: password 
     depends_on:
-      - mysql
+      - db
     networks:
       - gourmetdelights-network
     restart: on-failure

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class FullRecipeDTO {
-    private UUID recipeID;
+    private UUID recipeId;
     private String title;
     private String authorFName;
     private String authorLName;
