@@ -1,44 +1,88 @@
 package com.gourmetdelights.api.recipe;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.gourmetdelights.api.ingredient.Ingredient;
+import com.gourmetdelights.api.user.User;
+import com.gourmetdelights.api.user.UserService;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class RecipeService {
 	
-    @Autowired
-    private RecipeRepository recipeRepository;
+	@Autowired
+	private RecipeRepository recipeRepository;
 
-    // Existing methods
-
-    public Recipe putRecipe(Recipe recipe) {
-        return recipeRepository.save(recipe);
-    }
+	@Autowired
+	private UserService userService;
 	
-    public List<Recipe> getAllRecipes() {
-        return recipeRepository.findAll();
-    }
-	
-    public Recipe getRecipe(UUID id) {
-        Optional<Recipe> recipe = recipeRepository.findById(id);
-        return recipe.orElse(null); // Using orElse to prevent throwing an exception if the recipe is not found
-    }
+	@Transactional
+	public FullRecipeDTO putRecipe(CreateRecipeDTO data) {
+		User author = userService.getUserByUsername(data.getAuthorUsername());
 
-    public boolean doesRecipeExist(UUID id) {
-        return recipeRepository.existsById(id);
-    }
+		Recipe recipe = new Recipe();
+		recipe.setAuthor(author);
+		recipe.setTitle(data.getTitle());
+		recipe.setReadingTime(data.getReadingTime());
+		recipe.setSummary(data.getSummary());
+		recipe.setDatePublished(LocalDate.now());
+		recipe.setIngredients(new ArrayList<Ingredient>());
+		recipe.setContent(data.getContent());
+		
+		for (String ingredientString : data.getIngredients()) {
+			Ingredient ingredient = new Ingredient(recipe, ingredientString);
+			recipe.getIngredients().add(ingredient);
+		}
+
+		Recipe savedRecipe = recipeRepository.save(recipe);
+		return this.convertToFullRecipeDTO(savedRecipe);
+	}
+	
+	public List<Recipe> getAllRecipes() {
+		return recipeRepository.findAll();
+	}
+	
+	public Recipe getRecipe(UUID id) {
+		Optional<Recipe> recipe = recipeRepository.findById(id);
+		
+		return recipe.get();
+	}
+	
+	public boolean doesRecipeExist(UUID id) {
+		Optional<Recipe> recipe = recipeRepository.findById(id);
+		
+		return recipe.isPresent();
+	}
+
+	public FullRecipeDTO convertToFullRecipeDTO(Recipe recipe) {
+		FullRecipeDTO fullRecipe = new FullRecipeDTO();
+		fullRecipe.setRecipeId(recipe.getRecipeId());
+        fullRecipe.setTitle(recipe.getTitle());
+        fullRecipe.setAuthorFName(recipe.getAuthor().getFirstName());
+        fullRecipe.setAuthorLName(recipe.getAuthor().getLastName());
+        fullRecipe.setReadingTime(recipe.getReadingTime());
+        fullRecipe.setSummary(recipe.getSummary());
+        fullRecipe.setContent(recipe.getContent());
+        fullRecipe.setDatePublished(recipe.getDatePublished());
+        fullRecipe.setRating(3);
+        fullRecipe.setIngredients(
+            recipe.getIngredients()
+                .stream()
+                .map((ingredient) -> ingredient.getIngredient())
+                .collect(Collectors.toList()));
+		return fullRecipe;
+	}
 
     public List<Recipe> getRecipesByIngredients(List<String> ingredients) {
-        Set<Recipe> recipes = new HashSet<>();  // Using a set to avoid duplicates
-        for (String ingredient : ingredients) {
-            recipes.addAll(recipeRepository.findRecipesByIngredient(ingredient));
-        }
-        return new ArrayList<>(recipes);  // Converting set to list before returning
+        return recipeRepository.findRecipesByAllIngredients(ingredients);
     }
 }
