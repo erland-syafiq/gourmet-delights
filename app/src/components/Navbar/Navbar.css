@@ -1,0 +1,38 @@
+/* Style for the navigation bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fdd835;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Left side of the navbar (title) */
+.navbar-left {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Title link styling */
+.navbar-title {
+    text-decoration: none;
+    color: black;
+}
+
+/* Right side of the navbar (search link) */
+.navbar-right {
+    font-size: 16px;
+}
+
+/* Search link styling */
+.navbar-link {
+    text-decoration: none;
+    color: black;
+}
+
+/* Add hover effects */
+.navbar-title:hover,
+.navbar-link:hover {
+    text-decoration: underline;
+}
