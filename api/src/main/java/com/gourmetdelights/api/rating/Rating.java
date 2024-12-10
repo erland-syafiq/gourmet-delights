@@ -3,6 +3,7 @@ package com.gourmetdelights.api.rating;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
+import java.sql.Timestamp;
 
 import com.gourmetdelights.api.user.User;
 import com.gourmetdelights.api.ingredient.Ingredient;

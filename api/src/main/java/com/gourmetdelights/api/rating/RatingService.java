@@ -26,7 +26,7 @@ public class RatingService {
 	private UserService userService;
 	
 	@Transactional
-	public FullRatingDTO putRating(CreateRatingDTO data) {
+	public Rating putRating(CreateRatingDTO data) {
 		Rating rating = new Rating();
         rating.setUserId(data.getUserId());
         rating.setRecipeId(data.getRecipeId());
@@ -34,6 +34,7 @@ public class RatingService {
         rating.setTimeStamp(data.getTimeStamp());
 
 		Rating savedRating = ratingRepository.save(rating);
+		return savedRating;
 	}
 	
 	public List<Rating> getAllRatings() {
@@ -48,7 +49,7 @@ public class RatingService {
 	
 	public boolean doesRatingExist(UUID id) {
 		Optional<Rating> rating = ratingRepository.findById(id);
-		
+
 		return rating.isPresent();
 	}
 }

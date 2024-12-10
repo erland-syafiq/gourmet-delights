@@ -17,7 +17,7 @@ public interface RatingRepository extends JpaRepository<Rating, UUID> {
         WHERE rating.user_id = :user_id
         """
     )
-    List<Recipe> findRatingsByUser(@Param("user_id") String user_id);
+    List<Rating> findRatingsByUser(@Param("user_id") String user_id);
 
     @Query(
         """
@@ -25,6 +25,6 @@ public interface RatingRepository extends JpaRepository<Rating, UUID> {
         FROM Rating rating
         """
     )
-    List<Recipe> findAllRatings();
+    List<Rating> findAllRatings();
     
 }

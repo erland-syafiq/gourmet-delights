@@ -18,24 +18,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class RatingController {
 
 	@Autowired
-	private RatingService recipeService;
+	private RatingService ratingService;
 	
 	@PostMapping("/ratings")
-	public FullRecipeDTO putRating(@RequestBody CreateRatingDTO ratingData) {
+	public Rating putRating(@RequestBody CreateRatingDTO ratingData) {
 		return ratingService.putRating(ratingData);
 	}
 	
 	@GetMapping("/ratings")
-	public List<FullRatingDTO> getAllRatings() {
+	public List<Rating> getAllRatings() {
 		List<Rating> ratings = ratingService.getAllRatings();
 		return ratings.stream()
-					  .map(ratingService::convertToFullRatingDTO)
 					  .collect(Collectors.toList());
 	}
 	
 	@GetMapping("/ratings/{id}")
-	public FullRatingDTO getRating(@PathVariable UUID id) {
-		Recipe rating = ratingService.getRating(id);
-		return ratingService.convertToFullRatingDTO(rating);
+	public Rating getRating(@PathVariable UUID id) {
+		Rating rating = ratingService.getRating(id);
+		return rating;
   	}
 }
